@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Hostname</th>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Clock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= record.host.name %></td>
+        <td><%= record.item.name %></td>
+        <td><%= record.value %></td>
+        <td><%= Time.at(record.clock) %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to prev_path(:id => record), method: :get, class: "btn " do %>
+    <i class="glyphicon glyphicon-menu-left"></i>
+  <% end %>
+  <%= link_to next_path(:id => record), method: :get, class: "btn" do %>
+    <i class="glyphicon glyphicon-menu-right"></i>
+  <% end %>
+</div>

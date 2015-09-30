@@ -6,6 +6,10 @@ class Record < ActiveRecord::Base
   validates :item, presence: true
   validates :host, presence: true
 
+  def updated_at
+    Time.at(self.clock)
+  end
+
   def self.find_by_value (value)
     self.where('value like ?', "%#{value}%").
          first

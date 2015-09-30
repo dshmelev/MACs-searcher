@@ -5,7 +5,7 @@
         <th>Hostname</th>
         <th>Name</th>
         <th>Value</th>
-        <th>Clock</th>
+        <th>Updated at</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +13,7 @@
         <td><%= record.host.name %></td>
         <td><%= record.item.name %></td>
         <td><%= record.value %></td>
-        <td><%= Time.at(record.clock) %></td>
+        <td><%= l(record.updated_at, :format => :long) %></td>
       </tr>
     </tbody>
   </table>

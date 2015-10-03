@@ -28,6 +28,14 @@ class Record < ActiveRecord::Base
     raise ActiveRecord::RecordNotFound if rec.nil?
     return rec
   end
+  def params
+    ActionController::Parameters.new({
+      id: self.id,
+      host: self.host.name[/^([\w-]+)/],
+      item: self.item.name[/(\d+)/],
+      clock: Time.at(self.clock).strftime("%d-%m-%Y %H:%M:%S")
+    })
+  end
 end
 
 class Item < ActiveRecord::Base

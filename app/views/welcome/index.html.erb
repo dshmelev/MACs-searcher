@@ -8,19 +8,11 @@
               <%= image_tag("logo.png", :alt => "rss feed") %>
             </a>
           </h3>
-          <nav>
-            <ul class="nav masthead-nav">
-              <li class="active"><a href="https://kirzhachtelecom.ru">Home site</a></li>
-              <li><a href="https://wiki.kirzhachtelecom.ru">Wiki</a></li>
-              <li><a href="https://macs.kirzhachtelecom.ru">MACs</a></li>
-              <li><a href="http://mon.kirzhachtelecom.ru:8080">Dude</a></li>
-            </ul>
-          </nav>
         </div>
       </div>
       <div class="inner cover">
         <h1 class="cover-heading">MACs project</h1>
-        <%= form_tag("/search", method: "get") do %>
+        <%= form_tag("/search", id: "search_form",method: "get", remote: true, :format => :json) do %>
             <div class="input-group input-group-lg">
               <input type="text" class="form-control" name="userdata" placeholder="Search for...">
               <span class="input-group-btn">
@@ -29,9 +21,20 @@
             </div>
         <% end %>
       </div>
-      <% unless @record.nil? %>
-        <%= render partial: 'table', locals: {record: @record} %>
-      <% end %>
+      <div class="table-responsive">
+        <table class="table" id="result_table">
+          <thead>
+            <tr>
+              <th>Switch</th>
+              <th>Port</th>
+              <th>Updated at</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div id="more_button"></div>
+      </div>
       <%= flash_messages %>
       <div class="mastfoot">
         <div class="inner">

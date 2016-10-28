@@ -15,5 +15,5 @@ RUN bundle install
 ADD . $APP_HOME
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
-ENTRYPOINT ["rails", "server", "-b", "0.0.0.0"]
+ENTRYPOINT ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
 EXPOSE 3000

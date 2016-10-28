@@ -20,8 +20,8 @@ test:
 
 production:
   adapter: "mysql"
-  host:     ENV['DB_HOST']
-  database: ENV['DB_NAME']
-  username: ENV['DB_USER']
-  password: ENV['DB_PASS']
+  host:     <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
   read_timeout: 10

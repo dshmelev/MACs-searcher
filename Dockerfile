@@ -6,6 +6,7 @@ RUN apt-get update -qq && apt-get install -y \
   libxslt1-dev \
   nodejs
 ENV APP_HOME /myapp
+ENV RAILS_ENV production
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
@@ -15,5 +16,5 @@ RUN bundle install
 ADD . $APP_HOME
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
-ENTRYPOINT ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
+ENTRYPOINT ["rails", "server", "-b", "0.0.0.0"]
 EXPOSE 3000
